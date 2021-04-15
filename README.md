@@ -1,10 +1,11 @@
 # PRJ_Part-01
 
-Online Store Mobile Application with Android and Java
+An Ecommerce Android Mobile Application with Java and the Firebase's Real Time Database.
 
-Online store app is the buying of goods on the internet application with 
-integration of papal payment option using web API. 
-It used xampp and mysql for creating server-based database. 
+
+The app integrates JSON , external libraries and implements shopping cart 
+features such as register/login, pull/push products list from API and add/remove 
+item to the shopping cart.
 
 project features:
 1. Login/Sign up
@@ -12,4 +13,4 @@ project features:
 3. Product of brand
 4. Add to card
 5. Temporary order screen with icons (buy/cancel)
-6. Pay with papal
+6.Payment
