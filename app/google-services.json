@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "969179776751",
+    "project_id": "ecommerce-app-c1a21",
+    "storage_bucket": "ecommerce-app-c1a21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969179776751:android:4a5b74a794e1278d713d1a",
+        "android_client_info": {
+          "package_name": "com.zahra.ecommerceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969179776751-qhl7afjvi10ee706j56n7v34js92u9d7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHEuhey7RjjzQr8KxJ-JJYDGHmrXcQujQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969179776751-qhl7afjvi10ee706j56n7v34js92u9d7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

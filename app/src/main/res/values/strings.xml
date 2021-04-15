@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Ecommerce App</string>
+
+    <string name="first_slide">Choose Your Product</string>
+    <string name="second_slide">Fast Delivery</string>
+    <string name="third_slide">Good Service</string>
+
+    <string name="description">Lorem ipsum, or lipsum as it is sometimes known,
+        is dummy text used in laying out print, graphic or web designs.</string>
+</resources>
