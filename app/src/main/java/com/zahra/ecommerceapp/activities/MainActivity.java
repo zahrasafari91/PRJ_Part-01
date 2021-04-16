@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(homeFragment);
     }
 
-    private void  loadFragment(Fragment homeFragment){
+    private void loadFragment(Fragment homeFragment){
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.home_container,homeFragment);

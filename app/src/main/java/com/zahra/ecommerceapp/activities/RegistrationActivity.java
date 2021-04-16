@@ -44,7 +44,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("onBoardingScreen",MODE_PRIVATE);
 
-        Boolean isFirstTime = sharedPreferences.getBoolean("firstTime", true);
+        boolean isFirstTime = sharedPreferences.getBoolean("firstTime", true);
 
         if(isFirstTime){
             SharedPreferences.Editor editor = sharedPreferences.edit();

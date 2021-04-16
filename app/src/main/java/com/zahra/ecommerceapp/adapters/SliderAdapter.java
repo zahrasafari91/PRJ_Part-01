@@ -38,12 +38,14 @@ public class SliderAdapter extends PagerAdapter {
     };
 
     public SliderAdapter(Context context){
+
         this.context = context;
     }
 
 
     @Override
     public int getCount() {
+
         return headingArray.length;
     }
 
@@ -62,7 +64,7 @@ public class SliderAdapter extends PagerAdapter {
 
         ImageView imageView = view.findViewById(R.id.slider_img);
         TextView heading = view.findViewById(R.id.heading);
-        TextView  description = view.findViewById(R.id.description);
+        TextView description = view.findViewById(R.id.description);
 
         imageView.setImageResource(imagesArray[position]);
         heading.setText(headingArray[position]);
