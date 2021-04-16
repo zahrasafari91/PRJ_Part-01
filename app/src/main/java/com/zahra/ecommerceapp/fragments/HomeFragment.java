@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -22,18 +23,24 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.zahra.ecommerceapp.R;
 import com.zahra.ecommerceapp.adapters.CategoryAdapter;
+import com.zahra.ecommerceapp.adapters.NewProductsAdapter;
 import com.zahra.ecommerceapp.models.CategoryModel;
+import com.zahra.ecommerceapp.models.NewProductsModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    RecyclerView catRecyclerview;
+    RecyclerView catRecyclerview, newProductRecyclerview;
 
     //Category recyclerview
     CategoryAdapter categoryAdapter;
     List<CategoryModel> categoryModelList;
+
+    //New Product Recyclerview
+    NewProductsAdapter newProductsAdapter;
+    List<NewProductsModel> newProductsModelList;
 
     //FireStore
     FirebaseFirestore db;
@@ -50,7 +57,10 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
+
         catRecyclerview = root.findViewById(R.id.rec_category);
+
+        newProductRecyclerview = root.findViewById(R.id.new_product_rec);
 
         db = FirebaseFirestore.getInstance();
 
@@ -86,6 +96,37 @@ public class HomeFragment extends Fragment {
 
                             }
                         } else {
+
+                            Toast.makeText(getActivity(),""+ task.getException(),Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+
+
+        //New Products
+        newProductRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+        newProductsModelList = new ArrayList<>();
+        newProductsAdapter = new NewProductsAdapter(getContext(),newProductsModelList);
+        newProductRecyclerview.setAdapter(newProductsAdapter);
+
+        //Read Data
+        db.collection("NewProducts")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                NewProductsModel newProductsModel = document.toObject(NewProductsModel.class);
+                                newProductsModelList.add(newProductsModel);
+                                newProductsAdapter.notifyDataSetChanged();
+
+                            }
+                        } else {
+
+                            Toast.makeText(getActivity(),""+ task.getException(),Toast.LENGTH_SHORT).show();
 
                         }
                     }
