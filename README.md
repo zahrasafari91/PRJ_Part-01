@@ -13,4 +13,4 @@ project features:
 3. Product of brand
 4. Add to card
 5. Temporary order screen with icons (buy/cancel)
-6.Payment
+6. Payment

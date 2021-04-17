@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EcommerceApp">
-        <activity android:name=".activities.ShowAllActivity"></activity>
+        <activity android:name=".activities.AddAddressActivity"></activity>
+        <activity android:name=".activities.AddressActivity" />
+        <activity android:name=".activities.CartActivity" />
+        <activity android:name=".activities.ShowAllActivity" />
         <activity android:name=".activities.DetailedActivity" />
         <activity android:name=".activities.OnBoardingActivity" />
         <activity android:name=".activities.RegistrationActivity">
