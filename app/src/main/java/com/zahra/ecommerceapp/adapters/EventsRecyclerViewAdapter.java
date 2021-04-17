@@ -126,7 +126,7 @@ public class EventsRecyclerViewAdapter extends RecyclerView.Adapter<EventsRecycl
     class ViewHolder extends RecyclerView.ViewHolder{
         public final TextView titleTxtView, priceTxtView;
         public final ImageView imgView;
-        public final Button buyNowBtn, addToCartBtn;
+        public final Button  addToCartBtn;
 
         TextView prodNameTxtView, brandNameTxtView, idTxtView, prodDescriptionTxtView;
 
@@ -148,7 +148,6 @@ public class EventsRecyclerViewAdapter extends RecyclerView.Adapter<EventsRecycl
             prodDescriptionTxtView = itemView.findViewById(R.id.prodDescTextView);
 
 
-            buyNowBtn=itemView.findViewById(R.id.buyNowBtn);
             addToCartBtn = itemView.findViewById(R.id.addToCartBtn);
             this.mAdapter=adapter;
 
