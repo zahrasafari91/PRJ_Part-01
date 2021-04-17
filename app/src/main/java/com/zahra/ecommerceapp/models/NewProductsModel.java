@@ -1,6 +1,8 @@
 package com.zahra.ecommerceapp.models;
 
-public class NewProductsModel {
+import java.io.Serializable;
+
+public class NewProductsModel implements Serializable {
 
     String img_url;
     String description;

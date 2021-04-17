@@ -45,6 +45,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
             @Override
             public void onClick(View v) {
                Intent intent = new Intent(context, DetailedActivity.class);
+               intent.putExtra("detailed", list.get(position));
                context.startActivity(intent);
             }
         });
