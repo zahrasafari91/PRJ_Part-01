@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EcommerceApp">
-        <activity android:name=".activities.AddAddressActivity"></activity>
+        <activity android:name=".activities.PaymentActivity"></activity>
+        <activity android:name=".activities.AddAddressActivity" />
         <activity android:name=".activities.AddressActivity" />
         <activity android:name=".activities.CartActivity" />
         <activity android:name=".activities.ShowAllActivity" />
@@ -30,6 +31,10 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_TliqgS5xsaT8yL"/>
     </application>
 
 </manifest>
