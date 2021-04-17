@@ -2,23 +2,25 @@ package com.zahra.ecommerceapp.models;
 
 import java.io.Serializable;
 
-public class PopularProductsModel implements Serializable {
+public class ShowAllModels implements Serializable {
 
     String img_url;
     String description;
     String name;
     String rating;
     int price;
+    String type;
 
-    public PopularProductsModel() {
+    public ShowAllModels() {
     }
 
-    public PopularProductsModel(String img_url, String description, String name, String rating, int price) {
+    public ShowAllModels(String img_url, String description, String name, String rating, int price, String type) {
         this.img_url = img_url;
         this.description = description;
         this.name = name;
         this.rating = rating;
         this.price = price;
+        this.type = type;
     }
 
     public String getImg_url() {
@@ -59,5 +61,13 @@ public class PopularProductsModel implements Serializable {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

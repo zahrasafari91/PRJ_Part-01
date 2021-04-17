@@ -1,6 +1,7 @@
 package com.zahra.ecommerceapp.fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,14 +15,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -31,28 +27,25 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.zahra.ecommerceapp.R;
+import com.zahra.ecommerceapp.activities.DetailedActivity;
+import com.zahra.ecommerceapp.activities.ShowAllActivity;
 import com.zahra.ecommerceapp.adapters.CategoryAdapter;
-import com.zahra.ecommerceapp.adapters.EventsRecyclerViewAdapter;
 import com.zahra.ecommerceapp.adapters.NewProductsAdapter;
 import com.zahra.ecommerceapp.adapters.PopularProductsAdapter;
 import com.zahra.ecommerceapp.models.CategoryModel;
-import com.zahra.ecommerceapp.models.EventModel;
 import com.zahra.ecommerceapp.models.NewProductsModel;
 import com.zahra.ecommerceapp.models.PopularProductsModel;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
 
+    TextView catShowAll,popularShowAll,newProductShowAll;
+
     LinearLayout linearLayout;
     ProgressDialog progressDialog;
-    RecyclerView catRecyclerview, newProductRecyclerview, popularRecyclerview,beautyProductsRecyclerView;
+    RecyclerView catRecyclerview, newProductRecyclerview, popularRecyclerview;
 
     //Category recyclerview
     CategoryAdapter categoryAdapter;
@@ -70,11 +63,6 @@ public class HomeFragment extends Fragment {
     FirebaseFirestore db;
 
 
-    EventsRecyclerViewAdapter eventsRecyclerViewAdapter;
-    LinkedList<EventModel> prodArrList = new LinkedList<>();
-    public String url="https://makeup.p.rapidapi.com/products.json?rapidapi-key=8bbcc4dcefmsh497a1e42e9f16fcp18f779jsn2cbc03566eba&product_category=lipstick";
-
-
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -86,15 +74,49 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
+        db = FirebaseFirestore.getInstance();
+
         progressDialog = new ProgressDialog(getActivity());
         catRecyclerview = root.findViewById(R.id.rec_category);
         newProductRecyclerview = root.findViewById(R.id.new_product_rec);
         popularRecyclerview = root.findViewById(R.id.popular_rec);
-        beautyProductsRecyclerView = root.findViewById(R.id.beautyProdRecyclerView);
+
+        catShowAll = root.findViewById(R.id.category_see_all);
+        popularShowAll = root.findViewById(R.id.popular_see_all);
+        newProductShowAll = root.findViewById(R.id.newProducts_see_all);
+
+        newProductShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        popularShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        catShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
 
 
-        db = FirebaseFirestore.getInstance();
 
         linearLayout = root.findViewById(R.id.home_layout);
         linearLayout.setVisibility(View.GONE);
@@ -204,72 +226,6 @@ public class HomeFragment extends Fragment {
                 });
 
 
-
-
-        StringRequest strReq =  new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("Res",response);
-
-                try{
-//                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray jsonArray = new JSONArray(response);
-
-                    if(jsonArray.length()>0)
-                    {
-                        for(int i=0;i <20;i++)
-                        {
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            String name = jsonObject1.getString("name");
-
-                            String imgUrl = jsonObject1.getString("image_link");
-                            String brand = jsonObject1.getString("brand");
-
-                            String priceSign  = jsonObject1.getString("price_sign");
-                            String currency =  jsonObject1.getString("currency");
-                            String price = jsonObject1.getString("price");
-
-                            Integer id = jsonObject1.getInt("id");
-
-                            String description =  jsonObject1.getString("description");
-
-
-//                            Log.d("Prod",name + " " + imgUrl + " "+ brand + " " + priceSign + " " + currency + " " + price + " " );
-                            Log.d( "", String.valueOf(id));
-//
-
-                            prodArrList.add(new EventModel( name,  imgUrl,  brand,  priceSign, currency, price, id,description));
-
-
-                        }
-
-                        Log.d("prodSize", String.valueOf(prodArrList.size()));
-
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-                        eventsRecyclerViewAdapter = new EventsRecyclerViewAdapter(getActivity(),prodArrList);
-                        beautyProductsRecyclerView.setAdapter(eventsRecyclerViewAdapter);
-                        beautyProductsRecyclerView.setLayoutManager(linearLayoutManager);
-                        eventsRecyclerViewAdapter.notifyDataSetChanged();
-
-                        Log.d("length",String.valueOf(jsonArray.length()));
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Log.d("error", error.getMessage());
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-
-        requestQueue.add(strReq);
 
         return root;
     }

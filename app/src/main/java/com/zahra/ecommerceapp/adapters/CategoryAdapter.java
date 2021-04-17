@@ -1,6 +1,7 @@
 package com.zahra.ecommerceapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.zahra.ecommerceapp.R;
+import com.zahra.ecommerceapp.activities.DetailedActivity;
+import com.zahra.ecommerceapp.activities.ShowAllActivity;
 import com.zahra.ecommerceapp.models.CategoryModel;
 
 import java.util.List;
@@ -37,6 +40,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         Glide.with(context).load(list.get(position).getImg_url()).into(holder.catImage);
         holder.catName.setText(list.get(position).getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, ShowAllActivity.class);
+                intent.putExtra("type", list.get(position).getType());
+                context.startActivity(intent);
+
+            }
+        });
 
     }
 

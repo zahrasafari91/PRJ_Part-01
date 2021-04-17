@@ -9,11 +9,4 @@
         is dummy text used in laying out print, graphic or web designs.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="image_of_the_product" />
-    <string name="textview" />
-    <string name="add_to_cart" />
-    <string name="buy_now" />
-    <string name="brand" />
-    <string name="beauty_products">Beauty Products</string>
-    <string name="add_to_cart2">Add to Cart</string>
 </resources>
