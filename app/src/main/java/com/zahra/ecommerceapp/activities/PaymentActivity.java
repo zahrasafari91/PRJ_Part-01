@@ -85,7 +85,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
             options.put("amount", amount);
             JSONObject preFill = new JSONObject();
             //email
-            preFill.put("email", "developer.kharag@gmail.com");
+            preFill.put("email", "tmf.654@gmail.com");
             //contact
             preFill.put("contact", "7489347378");
 
